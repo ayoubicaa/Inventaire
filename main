@@ -1,0 +1,31 @@
+from math import *
+
+S = 15
+PI = pi
+H = 5
+W = 4
+a1 = int(input('the first angle'))
+a2 = int(input('the second angle'))
+
+
+class Radius:
+    def __init__(self, angleDeg):
+        self.angleRad = angleDeg * PI / 180
+        self.dist = self.radius()
+
+    def halfArm(self):
+        si = S - ((H / tan(self.angleRad)) + (W / sin(self.angleRad)))
+        return si
+
+    def radius(self):
+        if self.angleRad != PI / 2:
+            ri = self.halfArm() * tan(self.angleRad / 2)
+        else:
+            ri = S - W
+        return ri
+
+
+r1 = Radius(a1)
+r2 = Radius(a2)
+d = round(r1.dist + r2.dist,2)
+print(d)
